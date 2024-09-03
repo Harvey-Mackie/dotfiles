@@ -1,0 +1,34 @@
+# Ignore system-specific or backup files
+.DS_Store
+Thumbs.db
+*~
+*.swp
+*.swo
+*.tmp
+
+# Ignore compiled Lua files
+*.luac
+
+# Ignore log and temporary files
+lazy-lock.json
+lazyvim.json
+
+# Ignore spell-checker binary files (but track custom word lists)
+*.spl
+
+# Ignore the entire spell directory if you don't want to track any of its contents
+# /nvim/spell/
+
+# Ignore the stylua config if it's machine-specific
+# You might want to keep this if you use consistent formatting across different environments
+# /nvim/stylua.toml
+
+# Ignore symlinked directories (these are usually environment-specific)
+# Use a comment if you specifically want to ignore the link and not the content it points to
+# /nvim/lua/
+
+# If you want to exclude the symbolic link itself and not what it points to:
+lua
+
+# Optionally ignore README files if they are for personal use
+# README.md
