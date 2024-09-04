@@ -13,7 +13,8 @@ ln -s ~/dotfiles/nvim/init.lua ~/.config/nvim/init.lua
 ln -s ~/dotfiles/nvim/config ~/.config/nvim/config
 ln -s ~/dotfiles/nvim/lua ~/.config/nvim/lua
 
-
+#vim
+ln -s .vimrc ~/.vimrc
 
 ```
 
