@@ -9,9 +9,6 @@ Thumbs.db
 # Ignore compiled Lua files
 *.luac
 
-# Ignore log and temporary files
-lazy-lock.json
-lazyvim.json
 
 # Ignore spell-checker binary files (but track custom word lists)
 *.spl
