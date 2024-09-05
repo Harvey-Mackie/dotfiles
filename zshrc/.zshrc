@@ -1,3 +1,24 @@
+# Initialization code that may require console input (password prompts, [y/n] confirmations, etc.) must go above this block.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+export ZSH="$HOME/.oh-my-zsh"
+
+ZSH_THEME="powerlevel10k/powerlevel10k"
+
+source $ZSH/oh-my-zsh.sh
+
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+plugins=(
+  git
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+)
+
+alias ls='colorls'
+
 eval "$(/opt/homebrew/bin/brew shellenv)"
 eval "$(rbenv init -)"
 
@@ -6,18 +27,17 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 #autoload -U colors && colors
-export PS1="%F{214}%K{000}%m%F{015}%K{000}:%F{039}%K{000}%~%F{015}%K{000}\$ "
+# export PS1="%F{214}%K{000}%m%F{015}%K{000}:%F{039}%K{000}%~%F{015}%K{000}\$ "
 
 #adding git branches
-parse_git_branch() {
-    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
-}
-setopt PROMPT_SUBST
-PROMPT='%F{123}%K{000}%m%F{015}%K{000}:%F{039}%K{000}%~%F{141}%}$(parse_git_branch)%{%F{none}%} $ '
+# parse_git_branch() {
+    # git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+# }
+# setopt PROMPT_SUBST
+# PROMPT='%F{123}%K{000}%m%F{015}%K{000}:%F{039}%K{000}%~%F{141}%}$(parse_git_branch)%{%F{none}%} $ '
 
 #export CLICOLOR=1
 #export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
-alias ls='ls -Gp'
 
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="/Users/harveymackie/.rd/bin:$PATH"
@@ -49,7 +69,7 @@ alias sb='cd /Users/harveymackie/notes'
 alias notes='cd /Users/harveymackie/notes'
 alias repos='cd /Users/harveymackie/repos'
 alias temp='cd /Users/harveymackie/temp'
-
+alias dotfiles='cd ~/dotfiles/'
 
 # scripts
 refresh(){

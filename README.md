@@ -6,7 +6,7 @@ Rather than storing everything in ~/ we can store them in the dotfiles repo then
 # Create Links
 ```
 #zshrc
-ln -s .zshrc ~/.zshrc
+ln -s ~/dotfiles/zshrc/.zshrc ~/.zshrc
 
 #nvim
 ln -s ~/dotfiles/nvim/init.lua ~/.config/nvim/init.lua
