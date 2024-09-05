@@ -28,7 +28,6 @@ lazyvim.json
 # /nvim/lua/
 
 # If you want to exclude the symbolic link itself and not what it points to:
-lua
 
 # Optionally ignore README files if they are for personal use
 # README.md
