@@ -23,6 +23,7 @@ return {
         "java",
         "sql",
       },
+      ignore_install = { "jsonc" },
       -- Disable terraform treesitter on fixture files
       highlight = {
         disable = function(lang)
@@ -35,4 +36,3 @@ return {
     },
   },
 }
-
