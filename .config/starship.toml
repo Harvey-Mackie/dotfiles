@@ -1,0 +1,23 @@
+# https://starship.rs/presets/
+
+format = """
+[](bg:none fg:#458588)$directory[](fg:#458588 bg:#3c3836)\
+$git_branch$git_status$nodejs$python$rust
+$character
+"""
+
+[directory]
+style = "bg:#458588 fg:#ebdbb2"
+home_symbol = "~"
+truncate_to_repo = true
+truncation_length = 3
+format = "[ $path ]($style)"
+
+[git_branch]
+symbol = " "
+style = "bg:#3c3836 fg:#d79921"
+format = "[ $symbol$branch ]($style)"
+
+[git_status]
+style = "bg:#3c3836 fg:#cc241d"
+format = "[$all_status]($style) "

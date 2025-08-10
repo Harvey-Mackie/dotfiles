@@ -1,0 +1,37 @@
+
+{
+  "org": "Harvey-Mackie",
+  "root": {
+    "repos": [
+      "lab",
+      "performance",
+      "bank-blockchain",
+      {
+        "name": "archetypes",
+        "repos": ["camel-kafka-template-app", "spring-archetype"]
+      },
+      {
+        "name": "zenzone",
+        "repos": ["ZenZone", "FocusZone-Website"]
+      }
+    ]
+  },
+  "archived": {
+    "repos": [
+      {
+        "name": "ai",
+        "repos": ["Generative-AI-Chatbot", "Emotion-Recognition-System"]
+      },
+      "Reboot-Pension-App",
+      "React-Portfolio-Website",
+      {
+        "name": "munroTracker",
+        "repos": ["Munro-Bagger-Client", "MunroTracker"]
+      },
+      {
+        "name": "blog",
+        "repos": ["blog-client", "blog-backend"]
+      }
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+[colors.primary]
+background = "0x282828"  # gruvbox bg
+foreground = "0xebdbb2"  # gruvbox fg
+
+[colors.cursor]
+text   = "0x282828"
+cursor = "0xebdbb2"
+
+[colors.selection]
+background = "0x3c3836"
+text       = "0xfbf1c7"
+
+[font]
+size = 13.0
+
+[font.normal]
+family = "FiraCode Nerd Font"
+style = "Regular"
+
+[scrolling]
+history = 10000
+multiplier = 3
+
+[window]
+decorations = "None"
+
+[env]
+TERM = "xterm-256color"
+COLORTERM = "truecolor"
