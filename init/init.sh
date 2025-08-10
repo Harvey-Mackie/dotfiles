@@ -1,13 +1,16 @@
 #/bin/bash
 init() {
+  # Create documents folder if not exists
+  mkdir ~/Documents
+
   # Setup notes
-  git clone https://github.com/Harvey-Mackie/personal-notes.git ~/notes
+  git clone https://github.com/Harvey-Mackie/personal-notes.git ~/Documents/notes
 
   # Setup temp folder
-  mkdir ~/temp
+  mkdir ~/Documents/temp
 
   # Setup repos
-  REPOS_DIR=~/repos
+  REPOS_DIR=~/Documents/repos
   REPOS_JSON=~/init/repos.json
   REPOS_ORG=$(jq -r '.org' "$REPOS_JSON")
 

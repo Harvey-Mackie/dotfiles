@@ -26,11 +26,11 @@ alias kgp='k get pods'
 alias k_ctx='kubectl config get-contexts && kubectl get namespaces'
 
 ## quick navigation to key repos
-alias sb='cd ~/notes'
-alias notes='cd ~/notes'
-alias repos='cd ~/repos'
+alias sb='cd ~/Documents/notes'
+alias notes='cd ~/Documents/notes'
+alias repos='cd ~/Documents/repos'
 alias dotfiles='cd ~/dotfiles/'
-alias temp='cd ~/temp'
+alias temp='cd ~/Documents/temp'
 
 ## common spelling mistakes I make
 alias claer='clear'
