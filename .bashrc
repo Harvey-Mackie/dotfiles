@@ -3,6 +3,8 @@ if [[ "$(uname -s)" == "Linux" ]] && [[ -x /home/linuxbrew/.linuxbrew/bin/brew ]
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
   export PATH="/home/linuxbrew/.linuxbrew/opt/openjdk@17/bin:$PATH"
   export CPPFLAGS="-I/home/linuxbrew/.linuxbrew/opt/openjdk@17/include"
+else
+  eval "$(/opt/homebrew/bin/brew shellenv)" 
 fi
 if command -v brew >/dev/null 2>&1; then
   eval "$(brew shellenv)"
