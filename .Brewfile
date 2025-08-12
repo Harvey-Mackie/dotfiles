@@ -36,10 +36,10 @@ brew "neovim"
 brew "node"
 # Development kit for the Java programming language
 brew "openjdk@17"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.12", link: false
 # Execute binaries from Python packages in isolated environments
 brew "pipx"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.12", link: false
 # Ruby version manager
 brew "rbenv"
 # Search tool like grep and The Silver Searcher
@@ -56,6 +56,8 @@ brew "tree"
 brew "vim"
 # Executes a program periodically, showing output fullscreen
 brew "watch"
+# GPU-accelerated terminal emulator
+cask "alacritty"
 # Automatic tiling window manager similar to xmonad
 cask "amethyst"
 cask "font-fira-code-nerd-font"
