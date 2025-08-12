@@ -4,7 +4,7 @@ if [[ "$(uname -s)" == "Linux" ]] && [[ -x /home/linuxbrew/.linuxbrew/bin/brew ]
   export PATH="/home/linuxbrew/.linuxbrew/opt/openjdk@17/bin:$PATH"
   export CPPFLAGS="-I/home/linuxbrew/.linuxbrew/opt/openjdk@17/include"
 else
-  eval "$(/opt/homebrew/bin/brew shellenv)" 
+  eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 if command -v brew >/dev/null 2>&1; then
   eval "$(brew shellenv)"
@@ -33,6 +33,7 @@ alias notes='cd ~/Documents/notes'
 alias repos='cd ~/Documents/repos'
 alias dotfiles='cd ~/dotfiles/'
 alias temp='cd ~/Documents/temp'
+alias ..='cd ..'
 
 ## common spelling mistakes I make
 alias claer='clear'
