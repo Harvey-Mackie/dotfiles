@@ -35,6 +35,10 @@ alias dotfiles='cd ~/dotfiles/'
 alias temp='cd ~/Documents/temp'
 alias ..='cd ..'
 
+## obsidian vault
+alias obsidian-vault='open -a Obsidian ~/Documents/notes'
+alias obsidian-list='find ~/Documents/notes -name "*.md" -type f | grep -v "\.obsidian" | head -20'
+
 ## common spelling mistakes I make
 alias claer='clear'
 
