@@ -1,2 +1,3 @@
-# TMUX Plugins
-This directory is for holding general TMUX plguins to extend the default functionality.
+# tmux plugins
+
+This directory vendors tmux plugins used by `.tmux.conf`, including session persistence helpers.

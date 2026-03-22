@@ -1,25 +1,31 @@
-# INIT Scripts
-> This part is optional
+# Init scripts
 
-One challenge with switching between different machines is varying file structures. My philosphy is all custom user files/folders should be located at the same location regardless of the device. The common structure allows for faster navigation and reduces the cognative load of remembering where are your notes or repos saved.
+Optional bootstrap scripts for recreating the same `~/Documents` layout on a new machine.
 
-By ensuring all my key resources are on GitHub, achieving this is simple and ensures all of my machines are in sync at all times.
+## What `init.sh` creates
 
-Modify the GitHub repo links to suit your own needs. Ask yourself, What repos do you reference/work in? Where are your notes saved? Then make the neccessary changes. 
+- `~/Documents/notes` for the notes repository
+- `~/Documents/repos` for code repositories
+- `~/Documents/temp` for scratch files
 
-## Structure
----
-### Repositories 
-> Collection of code repos 
-- Script to clone repos into specific folders to organise my codebases. 
-- Currently, all the repos I reference are on GitHub.com, if you use GitHub enterprise, GitLab etc then adjust the script to suit.
+Repository cloning is driven by `repos.json`, so you can change the org and folder structure without editing the script logic.
 
-### Notes (Second Brain)
-> Collection of my markdown files
-- Backed up on GitHub in a private repo.
-- Simply, cloning the repo into `~/notes`
+## Requirements
 
-### Temp 
-> Space for storing short-lived notes, logs, attachments 
-- Not backed up on GitHub as these are not files which I intend to sync. 
-- Simply, creating a directory at `~/temp` 
+- `git`
+- `jq`
+
+## Usage
+
+```sh
+cd ~/dotfiles/init
+bash init.sh
+```
+
+The script is idempotent for clone targets that already exist: existing repositories are skipped instead of being recloned.
+
+## Customising it
+
+1. Update the notes repository URL in `init.sh` if your notes live elsewhere.
+2. Edit `repos.json` to match the repos and folders you want under `~/Documents/repos`.
+3. Keep paths aligned with the shell shortcuts in `shell/shared.sh`.
