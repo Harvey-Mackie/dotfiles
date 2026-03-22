@@ -1,71 +1,58 @@
 # Dotfiles
 
-This repository manages system configuration files using [GNU Stow](https://github.com/aspiers/stow) for symlink management. Instead of storing dotfiles directly in your home directory, they live in this repository and are symlinked into place.
+Personal machine setup managed with [GNU Stow](https://github.com/aspiers/stow). The repo keeps shell config, app config, bootstrap scripts, and macOS defaults in one place so a fresh machine can be rebuilt quickly.
 
-## What's Included
+## Repository layout
 
-- **bashrc**: Aliases, starship prompt configuration, vi keybindings, bash environment setup
-- **bash_profile**: macOS-specific bash initialization
-- **gitconfig**: Git user info, LFS setup, push defaults, credential storage
-- **vimrc**: Vim configuration
-- **tmux.conf**: Tmux settings with session persistence
-- **Brewfile**: Package management dependencies for macOS/Linux
-- **scripts/**: Utility shell functions (peek, refresh)
-- **shell/**: Environment variables and tokens
+- `.bash_profile` loads `.bashrc` for login shells.
+- `.bashrc` contains bash-specific startup and sources `shell/shared.sh`.
+- `.zshrc` contains zsh-specific startup and sources `shell/shared.sh`.
+- `shell/` holds shared shell helpers and the local token template.
+- `scripts/` contains shell functions that get sourced into the shell.
+- `.config/` contains managed app and CLI configuration.
+- `macos/` contains macOS defaults scripts and notes.
+- `init/` bootstraps notes and code repositories into `~/Documents`.
+- `tmux/` vendors tmux plugins used by `.tmux.conf`.
 
-# Getting Started
+See `.config/README.md`, `init/README.md`, `macos/README.md`, and `tmux/README.md` for folder-specific notes.
 
-## Quick Start
+## Quick start
+
 ```sh
-# Clone the repository
-$ git clone https://github.com/Harvey-Mackie/dotfiles.git ~/dotfiles
-$ cd ~/dotfiles
-
-# Install Stow (if not already installed)
-$ brew install stow
-
-# Create symlinks for all dotfiles
-$ stow .
-
-# Install dependencies from Brewfile
-$ brew bundle --global
+git clone https://github.com/Harvey-Mackie/dotfiles.git ~/dotfiles
+cd ~/dotfiles
+./setup.sh
 ```
 
-## First Time Setup
+`setup.sh` installs `stow` if needed, symlinks the repo into place, installs dependencies from `.Brewfile`, and can optionally apply macOS defaults.
 
-1. Create `shell/tokens.sh` with any personal environment variables or secrets
-2. Run `stow .` to create symlinks
-3. Restart your shell or run `source ~/.bashrc`
+## Manual setup after bootstrap
 
-## Adding New Dotfiles
+1. Copy `shell/tokens.example.sh` to `shell/tokens.sh` and add your local secrets.
+2. Restart your shell or run `source ~/.bashrc` / `source ~/.zshrc`.
+3. Run `bash macos/defaults.sh` or `./setup.sh --apply-macos-defaults` on macOS.
+4. Set the keyboard input source to `British - PC` if you want `Shift + 2` to type `"`.
 
-1. Place the dotfile in the appropriate location in the repo (e.g., `.config/myapp/config`)
-2. Run `stow .` to create the symlink
-3. Commit and push
+## Shell loading model
 
-## Tips
-## Brewfile
+- Put shared aliases, navigation shortcuts, and shell-safe helper functions in `shell/shared.sh`.
+- Keep shell-specific prompt and completion setup inside `.bashrc` or `.zshrc`.
+- Put reusable interactive functions in `scripts/*.sh`; they are sourced automatically from `shell/shared.sh`.
+- Keep `shell/tokens.sh` local-only. The tracked template lives at `shell/tokens.example.sh`.
 
-The Brewfile defines all dependencies. It's intentionally not auto-synced with your system—only update it when you intentionally want to change your environment.
+## Managing packages
 
-To update after installing new packages:
+The `.Brewfile` is the source of truth for packages, casks, and VS Code extensions. Update it intentionally rather than dumping the full system state.
+
+Install everything from the repo with:
+
 ```sh
-$ brew bundle dump --describe --force
+brew bundle --file ~/dotfiles/.Brewfile
 ```
 
-To install from Brewfile:
-```sh
-$ brew bundle --global
-```
+## Adding new dotfiles
 
-## Dependencies
-
-Core tools required:
-- `stow`: Manages symlinks
-- `starship`: Prompt styling
-- `fzf`: Fuzzy finder
-- `fd`: Fast file finder
-- `bat`: Cat clone with syntax highlighting
-- `tmux`: Terminal multiplexer
-
-See `Brewfile` for complete list of dependencies.
+1. Add the file in the repo using the target home-directory path.
+2. Re-run `stow .` from the repo root.
+3. Update the closest README if the change affects setup or folder conventions.
+4. Commit with a conventional commit message.

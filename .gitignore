@@ -11,3 +11,10 @@ Thumbs.db
 # Ignore sensitive files 
 shell/tokens.sh
 .git-credentials
+
+# Ignore local application state that should stay machine-specific.
+.config/cagent/
+.config/gh/hosts.yml
+
+# Ignore bulky generated files inside managed directories.
+Library/*
