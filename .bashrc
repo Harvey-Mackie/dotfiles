@@ -27,7 +27,11 @@ fi
 # Allow vim motions in terminal
 set -o vi
 
+# Update Paths
 case ":$PATH:" in
-  *":$HOME/.local/bin:"*) ;;
-  *) export PATH="$HOME/.local/bin:$PATH" ;;
+*":$HOME/.local/bin:"*) ;;
+*) export PATH="$HOME/.local/bin:$PATH" ;;
 esac
+
+## allow pip packages to be instantly rendered as executable cli tools
+export PATH="$HOME/Library/Python/3.9/bin:$PATH"
