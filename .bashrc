@@ -35,3 +35,7 @@ esac
 
 ## allow pip packages to be instantly rendered as executable cli tools
 export PATH="$HOME/Library/Python/3.9/bin:$PATH"
+
+## allow bun packages to be instantly rendered as executable cli tools
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
