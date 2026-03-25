@@ -1,0 +1,16 @@
+# Runtime data — managed by Claude Code, not versioned
+history.jsonl
+sessions/
+cache/
+paste-cache/
+file-history/
+shell-snapshots/
+session-env/
+backups/
+downloads/
+plans/
+projects/
+plugins/
+
+# Local settings (permissions, personal overrides)
+settings.local.json
