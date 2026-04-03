@@ -7,22 +7,6 @@
 
 Setting up a fresh machine from scratch is slow and error-prone without a single source of truth for your configuration. This repo centralises shell config, app config, bootstrap scripts, and macOS defaults, all symlinked into `~` via GNU Stow so any change made in the repo is immediately live. It is intended for personal use on any Unix-like machine; macOS-specific defaults are available but optional.
 
-## How It Works
-
-```mermaid
-flowchart TD
-    A[Clone repo to ~/dotfiles] --> B[Run setup.sh]
-    B --> C{Homebrew installed?}
-    C -- No --> D[Exit with error]
-    C -- Yes --> E[Install/repair stow via brew]
-    E --> F[stow . → symlinks repo into ~]
-    F --> G[brew bundle → install packages]
-    G --> H{--apply-macos-defaults?}
-    H -- Yes --> I[bash macos/defaults.sh]
-    H -- No --> J[Done]
-    I --> J
-```
-
 ## Getting Started
 
 ### Prerequisites
@@ -98,6 +82,22 @@ dotfiles/
 ├── 📁 macos/                # macOS defaults scripts
 ├── 📁 init/                 # Bootstraps notes and code repos into ~/Documents
 └── 📁 tmux/                 # Vendored tmux plugins
+```
+
+## How It Works
+
+```mermaid
+flowchart TD
+    A[Clone repo to ~/dotfiles] --> B[Run setup.sh]
+    B --> C{Homebrew installed?}
+    C -- No --> D[Exit with error]
+    C -- Yes --> E[Install/repair stow via brew]
+    E --> F[stow . → symlinks repo into ~]
+    F --> G[brew bundle → install packages]
+    G --> H{--apply-macos-defaults?}
+    H -- Yes --> I[bash macos/defaults.sh]
+    H -- No --> J[Done]
+    I --> J
 ```
 
 ## References

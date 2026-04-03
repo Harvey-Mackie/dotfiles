@@ -7,20 +7,6 @@
 
 READMEs drift out of date, skip key sections, or bury the information a new user actually needs. This skill analyses a repository's contents against a gold-standard template, scores the existing README across three principles, then iteratively rewrites it until the score reaches 90 or a ceiling is hit. It is for anyone who wants a consistent, high-quality README without doing the audit manually.
 
-## How It Works
-
-```mermaid
-flowchart TD
-    A[Invoke /readme-manager] --> B[Analyse codebase]
-    B --> C[Read existing README]
-    C --> D[Score against rubric]
-    D --> E{Score ≥ 90?}
-    E -- Yes --> F[Output final README]
-    E -- No --> G[Rewrite failing sections]
-    G --> H[Re-score]
-    H --> E
-```
-
 ## Getting Started
 
 ### Prerequisites
@@ -55,6 +41,23 @@ readme-manager/
 ├── 📄 TEMPLATE-README.md  # Gold-standard README template used as the scoring baseline
 └── 📄 README.md           # This file
 ```
+
+
+## How It Works
+
+```mermaid
+flowchart TD
+    A[Invoke /readme-manager] --> B[Analyse codebase]
+    B --> C[Read existing README]
+    C --> D[Score against rubric]
+    D --> E{Score ≥ 90?}
+    E -- Yes --> F[Output final README]
+    E -- No --> G[Rewrite failing sections]
+    G --> H[Re-score]
+    H --> E
+```
+
+
 
 ## References
 

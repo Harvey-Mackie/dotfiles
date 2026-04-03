@@ -5,10 +5,6 @@
 ## Overview
 {OVERVIEW: exactly 3 sentences. Sentence 1: the problem this repo solves. Sentence 2: what the repo does to solve it. Sentence 3: who it is for.}
 
-## How It Works
-{DIAGRAM: generate a Mermaid diagram that best represents this repo. Use a sequence diagram for APIs, flowchart for CLIs and scripts, and a simple graph for config/dotfile repos. Annotate nodes clearly.}
-
-
 ## Getting Started
 
 ### Prerequisites
@@ -35,6 +31,9 @@ $ {command}
 ```sh
 {file tree}
 ```
+
+## How It Works
+{DIAGRAM: generate a Mermaid diagram that best represents this repo. Use a sequence diagram for APIs, flowchart for CLIs and scripts, and a simple graph for config/dotfile repos. Annotate nodes clearly.}
 
 ## References
 {REFERENCES: include only if external libraries, papers, or repos meaningfully influenced this project. Format as a markdown bullet list with linked titles. Omit this section entirely if not applicable.}
