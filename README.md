@@ -1,58 +1,107 @@
-# Dotfiles
+# dotfiles
 
-Personal machine setup managed with [GNU Stow](https://github.com/aspiers/stow). The repo keeps shell config, app config, bootstrap scripts, and macOS defaults in one place so a fresh machine can be rebuilt quickly.
+![Shell](https://img.shields.io/badge/shell-bash%20%7C%20zsh-blue)
+![Stow](https://img.shields.io/badge/managed%20with-GNU%20Stow-brightgreen)
 
-## Repository layout
+## Overview
 
-- `.bash_profile` loads `.bashrc` for login shells.
-- `.bashrc` contains bash-specific startup and sources `shell/shared.sh`.
-- `.zshrc` contains zsh-specific startup and sources `shell/shared.sh`.
-- `shell/` holds shared shell helpers and the local token template.
-- `scripts/` contains shell functions that get sourced into the shell.
-- `.config/` contains managed app and CLI configuration.
-- `macos/` contains macOS defaults scripts and notes.
-- `init/` bootstraps notes and code repositories into `~/Documents`.
-- `tmux/` vendors tmux plugins used by `.tmux.conf`.
+Setting up a fresh machine from scratch is slow and error-prone without a single source of truth for your configuration. This repo centralises shell config, app config, bootstrap scripts, and macOS defaults, all symlinked into `~` via GNU Stow so any change made in the repo is immediately live. It is intended for personal use on any Unix-like machine; macOS-specific defaults are available but optional.
 
-See `.config/README.md`, `init/README.md`, `macos/README.md`, and `tmux/README.md` for folder-specific notes.
+## How It Works
 
-## Quick start
-
-```sh
-git clone https://github.com/Harvey-Mackie/dotfiles.git ~/dotfiles
-cd ~/dotfiles
-./setup.sh
+```mermaid
+flowchart TD
+    A[Clone repo to ~/dotfiles] --> B[Run setup.sh]
+    B --> C{Homebrew installed?}
+    C -- No --> D[Exit with error]
+    C -- Yes --> E[Install/repair stow via brew]
+    E --> F[stow . → symlinks repo into ~]
+    F --> G[brew bundle → install packages]
+    G --> H{--apply-macos-defaults?}
+    H -- Yes --> I[bash macos/defaults.sh]
+    H -- No --> J[Done]
+    I --> J
 ```
 
-`setup.sh` installs `stow` if needed, symlinks the repo into place, installs dependencies from `.Brewfile`, and can optionally apply macOS defaults.
+## Getting Started
 
-## Manual setup after bootstrap
+### Prerequisites
 
-1. Copy `shell/tokens.example.sh` to `shell/tokens.sh` and add your local secrets.
-2. Restart your shell or run `source ~/.bashrc` / `source ~/.zshrc`.
-3. Run `bash macos/defaults.sh` or `./setup.sh --apply-macos-defaults` on macOS.
-4. Set the keyboard input source to `British - PC` if you want `Shift + 2` to type `"`.
+- [Homebrew](https://brew.sh/) — required before running `setup.sh`
+- [Git](https://git-scm.com/downloads) — to clone the repo
+- macOS — only required if using `--apply-macos-defaults`
 
-## Shell loading model
-
-- Put shared aliases, navigation shortcuts, and shell-safe helper functions in `shell/shared.sh`.
-- Keep shell-specific prompt and completion setup inside `.bashrc` or `.zshrc`.
-- Put reusable interactive functions in `scripts/*.sh`; they are sourced automatically from `shell/shared.sh`.
-- Keep `shell/tokens.sh` local-only. The tracked template lives at `shell/tokens.example.sh`.
-
-## Managing packages
-
-The `.Brewfile` is the source of truth for packages, casks, and VS Code extensions. Update it intentionally rather than dumping the full system state.
-
-Install everything from the repo with:
+### Installation
 
 ```sh
-brew bundle --file ~/dotfiles/.Brewfile
+$ git clone https://github.com/Harvey-Mackie/dotfiles.git ~/dotfiles
+$ cd ~/dotfiles
+$ ./setup.sh
+// Installs stow, symlinks repo into ~, installs .Brewfile packages
 ```
 
-## Adding new dotfiles
+To also apply macOS system defaults:
 
-1. Add the file in the repo using the target home-directory path.
-2. Re-run `stow .` from the repo root.
-3. Update the closest README if the change affects setup or folder conventions.
-4. Commit with a conventional commit message.
+```sh
+$ ./setup.sh --apply-macos-defaults
+// Applies defaults then exits
+```
+
+### Configuration
+
+After bootstrap, copy the token template and add your local secrets:
+
+```sh
+$ cp shell/tokens.example.sh shell/tokens.sh
+// shell/tokens.sh is gitignored — safe for API keys and local vars
+```
+
+Then reload your shell:
+
+```sh
+$ source ~/.bashrc   # or source ~/.zshrc
+```
+
+### Usage
+
+Add a new dotfile to the repo and re-stow:
+
+```sh
+$ stow .
+// Symlinks any new files from ~/dotfiles into ~
+```
+
+Install or update all packages from the Brewfile:
+
+```sh
+$ brew bundle --file ~/dotfiles/.Brewfile
+// Installs missing packages, skips already-installed ones
+```
+
+## Structure
+
+```sh
+dotfiles/
+├── 📄 setup.sh              # Bootstrap: stow + brew bundle + optional macOS defaults
+├── 📄 .Brewfile             # Source of truth for packages, casks, VS Code extensions
+├── 📄 .bash_profile         # Loads .bashrc for login shells
+├── 📄 .bashrc               # Bash startup; sources shell/shared.sh
+├── 📄 .zshrc                # Zsh startup; sources shell/shared.sh
+├── 📄 .tmux.conf            # tmux config; references tmux/ for plugins
+├── 📄 .gitconfig            # Global git config
+├── 📁 shell/
+│   ├── shared.sh            # Shared aliases, navigation shortcuts, sources scripts/
+│   └── tokens.example.sh   # Template for local secrets (copy to tokens.sh)
+├── 📁 scripts/              # Interactive shell functions; auto-sourced via shared.sh
+├── 📁 .config/              # App and CLI config (alacritty, nvim, git, gh, starship…)
+├── 📁 .ssh/                 # SSH host aliases (includes homelab)
+├── 📁 macos/                # macOS defaults scripts
+├── 📁 init/                 # Bootstraps notes and code repos into ~/Documents
+└── 📁 tmux/                 # Vendored tmux plugins
+```
+
+## References
+
+- [GNU Stow](https://www.gnu.org/software/stow/) — symlink management used to link this repo into `~`
+- [Homebrew](https://brew.sh/) — package manager; `.Brewfile` is the package manifest
+- [Using the SSH Config File](https://linuxize.com/post/using-the-ssh-config-file/) — SSH config patterns and options
