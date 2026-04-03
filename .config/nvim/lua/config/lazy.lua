@@ -24,6 +24,7 @@ require("lazy").setup({
       --colorscheme = nil,
       --}
     },
+    { import = "lazyvim.plugins.extras.lang.markdown" },
     -- import/override with your plugins
     { import = "plugins" },
   },
