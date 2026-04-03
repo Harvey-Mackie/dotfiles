@@ -136,7 +136,8 @@ Rules:
 - Where codebase evidence is absent, use `{TODO: ...}` rather than guessing
 - Do not change content that already passes unless it conflicts with ground truth
 - All shell snippets must use fenced `sh` blocks, `$` prefix, and `// output` comments
-- Use British English when writing READMEs 
+- Use British English when writing READMEs
+- All Mermaid node labels must use quoted strings (e.g. `A["label"]`, `B{"label"}`) — unquoted labels containing special characters (`~`, `/`, `-`, `→`, `?`) will cause a Mermaid syntax error. Always quote every node label as a safe default.
 
 ---
 
