@@ -39,3 +39,5 @@ export PATH="$HOME/Library/Python/3.9/bin:$PATH"
 ## allow bun packages to be instantly rendered as executable cli tools
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+export PATH="/Applications/Codex.app/Contents/Resources:$PATH"
+export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"

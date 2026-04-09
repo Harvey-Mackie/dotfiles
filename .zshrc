@@ -48,3 +48,5 @@ if command -v kubectl >/dev/null 2>&1; then
   source <(kubectl completion zsh)
   complete -o default -F __start_kubectl k
 fi
+export PATH="/Applications/Codex.app/Contents/Resources:$PATH"
+export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
