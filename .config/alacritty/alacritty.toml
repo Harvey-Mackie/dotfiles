@@ -21,9 +21,6 @@ style = "Regular"
 history = 10000
 multiplier = 3
 
-[window]
-decorations = "None"
-
 [env]
 TERM = "xterm-256color"
 COLORTERM = "truecolor"
