@@ -18,3 +18,11 @@ shell/tokens.sh
 
 # Ignore bulky generated files inside managed directories.
 Library/*
+.claude/tasks/54d4d526-09ea-471b-aeae-7509dbf0d243
+.claude/telemetry
+.claude/settings.json
+.config/github-copilot
+.config/lazyjira
+.config/strava-cli
+AGENTS.md
+CLAUDE.md
