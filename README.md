@@ -43,7 +43,7 @@ $ cp shell/tokens.example.sh shell/tokens.sh
 Then reload your shell:
 
 ```sh
-$ source ~/.bashrc   # or source ~/.zshrc
+source ~/.bashrc   # or source ~/.zshrc
 ```
 
 ### Usage
@@ -88,15 +88,15 @@ dotfiles/
 
 ```mermaid
 flowchart TD
-    A[Clone repo to ~/dotfiles] --> B[Run setup.sh]
-    B --> C{Homebrew installed?}
-    C -- No --> D[Exit with error]
-    C -- Yes --> E[Install/repair stow via brew]
-    E --> F[stow . → symlinks repo into ~]
-    F --> G[brew bundle → install packages]
-    G --> H{--apply-macos-defaults?}
-    H -- Yes --> I[bash macos/defaults.sh]
-    H -- No --> J[Done]
+    A["Clone repo to ~/dotfiles"] --> B["Run setup.sh"]
+    B --> C{"Homebrew installed?"}
+    C -- No --> D["Exit with error"]
+    C -- Yes --> E["Install/repair stow via brew"]
+    E --> F["stow . symlinks repo into ~"]
+    F --> G["brew bundle installs packages"]
+    G --> H{"--apply-macos-defaults?"}
+    H -- Yes --> I["bash macos/defaults.sh"]
+    H -- No --> J["Done"]
     I --> J
 ```
 
