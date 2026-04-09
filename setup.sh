@@ -25,6 +25,8 @@ fi
 
 if ! command -v stow >/dev/null 2>&1; then
   brew install stow
+elif ! stow --version >/dev/null 2>&1; then
+  brew reinstall stow
 fi
 
 cd "$REPO_ROOT"
