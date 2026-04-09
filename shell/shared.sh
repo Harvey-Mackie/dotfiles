@@ -25,14 +25,6 @@ alias temp='cd "$TEMP_DIR"'
 alias ..='cd ..'
 alias claer='clear'
 
-obsidian-vault() {
-  open -a Obsidian "$NOTES_DIR"
-}
-
-obsidian-list() {
-  find "$NOTES_DIR" -name "*.md" -type f | grep -v "\.obsidian" | head -20
-}
-
 if [[ -d "$HOME/scripts" ]]; then
   for f in "$HOME"/scripts/*.sh; do
     [[ -f "$f" ]] && source "$f"
