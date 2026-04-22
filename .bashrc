@@ -24,6 +24,11 @@ if command -v kubectl >/dev/null 2>&1; then
   complete -o default -F __start_kubectl k
 fi
 
+# Prevent case-sensitivity in terminal
+bind 'set completion-ignore-case on'
+shopt -s nocaseglob
+shopt -s nocasematch
+
 # Allow vim motions in terminal
 set -o vi
 
